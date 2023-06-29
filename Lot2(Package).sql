@@ -1,0 +1,23 @@
+----------------------------------------
+--////// LOT 2 \\\\\\
+----------------------------------------
+
+-- Creation du package ACTIONSURCOMPTE
+
+CREATE OR REPLACE PACKAGE ACTIONSURCOMPTE AS
+FUNCTION Montant_Opt (IdOpt number) RETURN number;
+FUNCTION Compte_Opt (IdOpt number) RETURN number;
+FUNCTION decouvert (Cpt INTEGER) RETURN number;
+FUNCTION typeDeCompte (Cpt INTEGER) RETURN number;
+-- lot2 -> SOLDECOMPTE only
+FUNCTION SOLDECOMPTE (Cpt INTEGER) RETURN INTEGER; 
+FUNCTION operationPossible (Cpt INTEGER, value NUMBER) RETURN boolean;
+ -- lot2 -> END
+PROCEDURE AJOUTNOUVOPERATION (pIdcompte INTEGER, pValue NUMBER);
+PROCEDURE ANNULEROPERATION (IdOpt number); 
+PROCEDURE MAJDECOUVERTAUTORISE (pIdcompte INTEGER, pValue NUMBER); 
+PROCEDURE MAJMONTANTOPERATION (pIdoperation INTEGER, pValue NUMBER); 
+PROCEDURE FAIRETRANSFERTCOMPTE (CptOrig INTEGER, CptDest INTEGER, pValue NUMBER); 
+FUNCTION BANQUEOPERATION(Idopt INTEGER) RETURN VARCHAR; 
+END ACTIONSURCOMPTE;
+
